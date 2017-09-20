@@ -26,7 +26,7 @@ setup(
     description='SDK for interacting with Boom',
     keywords='boom',
     packages=["boom"],
-    install_requires=["six>=1.0.0", "declaration>=0.2.0"],
+    install_requires=["six>=1.0.0", "declaration>=0.2.1"],
     include_package_data=True,
     license='The Unlicense',
 )
