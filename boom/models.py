@@ -11,6 +11,7 @@ class Message(models.DeclarativeBase):
     sender = fields.StringField()
     receiver = fields.StringField()
     identifier = fields.StringField()
+    intent = fields.StringField()
     content = fields.StringField()
     raw = fields.StringField()
     extra = fields.JSONField()
