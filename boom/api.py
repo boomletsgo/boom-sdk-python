@@ -89,7 +89,8 @@ class API(object):
     def get(self, endpoint, **kwargs):
         url = self.generate_endpoint_url(endpoint, **kwargs)
         headers = self.get_headers()
-        dataset = requests.get(url, headers=headers).json()
+        dataset = requests.get(url, headers=headers)
+        dataset = dataset.json()["data"]
         dataset = self.normalize_data(dataset)
 
         return dataset
@@ -97,35 +98,25 @@ class API(object):
     def post(self, endpoint, data, **kwargs):
         headers = self.get_headers()
         data = self.normalize_data(data)
-
-        dataset = []
-        for item in data:
-            url = self.generate_endpoint_url(endpoint, item, **kwargs)
-            response = requests.post(url, headers=headers, json=item)
-            response_data = response.json()["data"]
-            dataset.append(response_data)
+        url = self.generate_endpoint_url(endpoint, **kwargs)
+        dataset = requests.post(url, headers=headers, json=data)
+        dataset = dataset.json()["data"]
 
         return dataset
 
     def patch(self, endpoint, data, **kwargs):
         headers = self.get_headers()
         data = self.normalize_data(data)
-
-        dataset = []
-        for item in data:
-            url = self.generate_endpoint_url(endpoint, item, **kwargs)
-            response = requests.patch(url, headers=headers, json=item)
-            response_data = response.json()["data"]
-            dataset.append(response_data)
+        url = self.generate_endpoint_url(endpoint, **kwargs)
+        dataset = requests.patch(url, headers=headers, json=item)
+        dataset = dataset.json()["data"]
 
         return dataset
 
     def delete(self, endpoint, data, **kwargs):
         headers = self.get_headers()
         data = self.normalize_data(data)
-
-        for item in data:
-            url = self.generate_endpoint_url(endpoint, item, **kwargs)
-            requests.delete(url, headers=headers)
+        url = self.generate_endpoint_url(endpoint, **kwargs)
+        requests.delete(url, headers=headers, json=item)
 
         return True
