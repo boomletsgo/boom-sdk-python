@@ -108,7 +108,7 @@ class API(object):
         headers = self.get_headers()
         data = self.normalize_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
-        dataset = requests.patch(url, headers=headers, json=item)
+        dataset = requests.patch(url, headers=headers, json=data)
         dataset = dataset.json()["data"]
 
         return dataset
@@ -117,6 +117,6 @@ class API(object):
         headers = self.get_headers()
         data = self.normalize_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
-        requests.delete(url, headers=headers, json=item)
+        requests.delete(url, headers=headers, json=data)
 
         return True
