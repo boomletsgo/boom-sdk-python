@@ -5,9 +5,18 @@ class Account(models.DeclarativeBase):
     pass
 
 
+class Conversation(models.DeclarativeBase):
+    id = fields.UUIDField()
+
+
+class Platform(models.DeclarativeBase):
+    id = fields.UUIDField()
+    identifier = fields.StringField()
+
+
 class Message(models.DeclarativeBase):
-    conversation_id = fields.UUIDField()
-    platform = fields.StringField()
+    conversation = fields.NestedField(Conversation)
+    platform = fields.NestedField(Platform)
     sender = fields.StringField()
     receiver = fields.StringField()
     identifier = fields.StringField()

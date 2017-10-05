@@ -90,7 +90,7 @@ class API(object):
         url = self.generate_endpoint_url(endpoint, **kwargs)
         headers = self.get_headers()
         dataset = requests.get(url, headers=headers)
-        dataset = dataset.json()["data"]
+        dataset = dataset.json()
         dataset = self.normalize_data(dataset)
 
         return dataset
@@ -100,7 +100,7 @@ class API(object):
         data = self.normalize_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
         dataset = requests.post(url, headers=headers, json=data)
-        dataset = dataset.json()["data"]
+        dataset = dataset.json()
 
         return dataset
 
@@ -109,7 +109,7 @@ class API(object):
         data = self.normalize_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
         dataset = requests.patch(url, headers=headers, json=data)
-        dataset = dataset.json()["data"]
+        dataset = dataset.json()
 
         return dataset
 

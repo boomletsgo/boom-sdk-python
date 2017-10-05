@@ -1,1 +1,1 @@
-declaration==0.2.4
+declaration==0.2.5
