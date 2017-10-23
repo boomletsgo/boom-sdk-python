@@ -15,6 +15,7 @@ class API(object):
         "experience": "/experience/{experience}",
         "platform": "/platform/{platform}",
         "conversation": "/conversation/{conversation}",
+        "conversation-link": "/conversation/{conversation}/link/{code}",
         "message": "/message/{message}"
     }
 
