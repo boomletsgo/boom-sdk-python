@@ -71,13 +71,8 @@ class API(object):
             key = key[:-3]
         token = "{" + key + "}"
         if token in path:
-            try:
-                # All token replacements should be UUIDs. If not, don't replace them.
-                uuid.UUID(value, version=4)
-                path = path.replace(token, value)
-                updated = True
-            except ValueError:
-                pass
+            updated = True
+            path = path.replace(token, value)
 
         return path, updated
 
