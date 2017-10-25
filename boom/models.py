@@ -5,13 +5,16 @@ class Account(models.DeclarativeBase):
     pass
 
 
-class Conversation(models.DeclarativeBase):
-    id = fields.UUIDField()
-
-
 class Platform(models.DeclarativeBase):
     id = fields.UUIDField()
     identifier = fields.StringField()
+
+
+class Conversation(models.DeclarativeBase):
+    id = fields.UUIDField()
+    platform = fields.NestedField(Platform)
+    created_date = fields.DateTimeField()
+    updated_date = fields.DateTimeField()
 
 
 class Message(models.DeclarativeBase):

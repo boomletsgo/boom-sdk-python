@@ -8,6 +8,7 @@ import six
 class API(object):
     urls = {
         "index": "/",
+        "account": "/account/{client}",
         "client": "/client/{client}",
         "client-location": "/client/{client}/location/{location}",
         "client-location-experience": "/client/{client}/location/{location}/experience/{experience}",
