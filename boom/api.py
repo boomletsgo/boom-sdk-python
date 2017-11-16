@@ -1,5 +1,4 @@
 import os
-import uuid
 
 import requests
 import six
@@ -9,24 +8,35 @@ class API(object):
     urls = {
         "index": "/",
         "account": "/account/{client}",
+        "authenticate": "/account/authenticate",
         "client": "/client/{client}",
         "client-location": "/client/{client}/location/{location}",
         "client-location-experience": "/client/{client}/location/{location}/experience/{experience}",
         "client-location-platform": "/client/{client}/location/{location}/platform/{platform}",
-        "experience": "/experience/{experience}",
-        "platform": "/platform/{platform}",
         "conversation": "/conversation/{conversation}",
         "conversation-link": "/conversation/{conversation}/link/{code}",
-        "message": "/message/{message}"
+        "experience": "/experience/{experience}",
+        "message": "/message/{message}",
+        "payment": "/order/{order}/payment/{payment}",
+        "payment-method": "/account/payment/method/{payment_method}",
+        "platform": "/platform/{platform}",
+        "order": "/order/{order}",
+        "order-search": "/order/search"
     }
 
-    def __init__(self):
+    def __init__(self, authorization=None):
         self.api_url = self.url = os.getenv("BOOM_API_URL", "https://api.boomletsgo.com")
+        self.authorization = authorization
 
     def get_headers(self):
-        return {
+        headers = {
             "Content-Type": "application/json"
         }
+
+        if self.authorization:
+            headers["Authorization"] = "Bearer {0}".format(self.authorization)
+
+        return headers
 
     def make_url(self, path, querystring=None):
         if path.startswith("/"):
