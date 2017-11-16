@@ -34,7 +34,7 @@ class API(object):
         }
 
         if self.authorization:
-            headers["Authorization"] = "Bearer {0}".format(self.authorization)
+            headers["Authorization"] = self.authorization
 
         return headers
 
