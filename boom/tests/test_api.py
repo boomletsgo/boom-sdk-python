@@ -56,13 +56,6 @@ class TestAPI(object):
         url = api.generate_endpoint_url("client", {"client_id": "308a12ce-570e-4837-a374-f69d26713aa8"})
         assert url == "https://api.boomletsgo.com/client/308a12ce-570e-4837-a374-f69d26713aa8"
 
-    def test_update_path_passes_with_invalid_uuid(self):
-        api = API()
-        path = "testing/{dummy}"
-        path, updated = api.update_path(path, "dummy", "not-a-uuid")
-        assert updated is False
-        assert path == "testing/{dummy}"
-
     def test_normalize_data(self):
         api = API()
         data = {"anything": "goes"}
