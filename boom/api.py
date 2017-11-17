@@ -21,6 +21,7 @@ class API(object):
         "payment-method": "/account/payment/method/{payment_method}",
         "platform": "/platform/{platform}",
         "order": "/order/{order}",
+        "order-payment": "/order/{order}/payment/method/{method}",
         "order-search": "/order/search"
     }
 
