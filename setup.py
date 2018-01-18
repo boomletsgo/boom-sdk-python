@@ -21,7 +21,7 @@ setup(
     author='Jordan Ambra',
     author_email='jordan@serenitysoftware.io',
     url='https://github.com/boomletsgo/boom-sdk-python',
-    version='0.1.15',
+    version='0.1.16',
     classifiers=classifiers,
     description='SDK for interacting with Boom',
     keywords='boom',

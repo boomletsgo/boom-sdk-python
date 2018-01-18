@@ -22,7 +22,8 @@ class API(object):
         "platform": "/platform/{platform}",
         "order": "/order/{order}",
         "order-payment": "/order/{order}/payment/method/{method}",
-        "order-search": "/order/search"
+        "order-search": "/order/search",
+        "receipt-send": "/receipt/{order}/{account}/send"
     }
 
     def __init__(self, authorization=None):
