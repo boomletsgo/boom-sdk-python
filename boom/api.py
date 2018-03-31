@@ -24,7 +24,8 @@ class API(object):
         "order-payment": "/order/{order}/payment/{payment}",
         "order-payment-method": "/order/{order}/payment/method/{method}",
         "order-search": "/order/search",
-        "receipt-send": "/receipt/{order}/{account}/send"
+        "receipt-send": "/receipt/{order}/{account}/send",
+        "refund": "/order/{order}/payment/{payment}/refund/{refund}"
     }
 
     def __init__(self, authorization=None):
