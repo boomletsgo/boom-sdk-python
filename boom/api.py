@@ -24,7 +24,8 @@ class API(object):
         "order-payment": "/order/{order}/payment/{payment}",
         "order-payment-method": "/order/{order}/payment/method/{method}",
         "order-search": "/order/search",
-        "receipt-send": "/receipt/{order}/{account}/send",
+        "order-status-update": "/order/status/{status}",
+        "receipt-send": "/receipt/{order}/{payment}/send",
         "refund": "/order/{order}/payment/{payment}/refund/{refund}"
     }
 
