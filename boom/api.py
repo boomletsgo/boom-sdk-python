@@ -18,6 +18,7 @@ class API(object):
         "experience": "/experience/{experience}",
         "message": "/message/{message}",
         "payment": "/order/{order}/payment/{payment}",
+        "payment-credentials": "/client/{client}/location/{location}/credentials",
         "payment-method": "/payment/method/{payment_method}",
         "platform": "/platform/{platform}",
         "order": "/order/{order}",
