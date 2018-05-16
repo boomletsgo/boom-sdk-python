@@ -16,7 +16,6 @@ class API(object):
         "conversation": "/conversation/{conversation}",
         "conversation-link": "/conversation/{conversation}/link/{code}",
         "experience": "/experience/{experience}",
-        "gift-card": "/payment/gift-card/{card}",
         "message": "/message/{message}",
         "payment": "/order/{order}/payment/{payment}",
         "payment-credentials": "/client/{client}/location/{location}/credentials",
@@ -28,7 +27,8 @@ class API(object):
         "order-search": "/order/search",
         "order-status-update": "/order/status/{status}",
         "receipt-send": "/receipt/{order}/{payment}/send",
-        "refund": "/order/{order}/payment/{payment}/refund/{refund}"
+        "refund": "/order/{order}/payment/{payment}/refund/{refund}",
+        "wallet": "/payment/wallet/{identifier}"
     }
 
     def __init__(self, authorization=None):
