@@ -1,7 +1,10 @@
+import json
 import os
 
 import requests
 import six
+
+from boom import encoder
 
 
 class API(object):
@@ -82,7 +85,8 @@ class API(object):
         url = self.make_url(path, querystring)
         return url
 
-    def update_path(self, path, key, value):
+    @staticmethod
+    def update_path(path, key, value):
         # Wrap the key in {}, like client => {client}
         updated = False
         if key.endswith("_id"):
@@ -94,10 +98,16 @@ class API(object):
 
         return path, updated
 
-    def normalize_data(self, data):
+    @staticmethod
+    def normalize_data(data):
         if isinstance(data, dict):
             data = [data]
 
+        return data
+
+    @staticmethod
+    def encode_data(data):
+        data = json.dumps(data, cls=encoder.BoomJSONEncoder)
         return data
 
     def get(self, endpoint, **kwargs):
@@ -112,8 +122,9 @@ class API(object):
     def post(self, endpoint, data, **kwargs):
         headers = self.get_headers()
         data = self.normalize_data(data)
+        data = self.encode_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
-        dataset = requests.post(url, headers=headers, json=data)
+        dataset = requests.post(url, headers=headers, data=data)
         dataset = dataset.json()
 
         return dataset
@@ -121,8 +132,9 @@ class API(object):
     def patch(self, endpoint, data, **kwargs):
         headers = self.get_headers()
         data = self.normalize_data(data)
+        data = self.encode_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
-        dataset = requests.patch(url, headers=headers, json=data)
+        dataset = requests.patch(url, headers=headers, data=data)
         dataset = dataset.json()
 
         return dataset
@@ -130,7 +142,8 @@ class API(object):
     def delete(self, endpoint, data, **kwargs):
         headers = self.get_headers()
         data = self.normalize_data(data)
+        data = self.encode_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
-        requests.delete(url, headers=headers, json=data)
+        requests.delete(url, headers=headers, data=data)
 
         return True
