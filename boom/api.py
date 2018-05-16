@@ -16,6 +16,7 @@ class API(object):
         "conversation": "/conversation/{conversation}",
         "conversation-link": "/conversation/{conversation}/link/{code}",
         "experience": "/experience/{experience}",
+        "gift-card": "/payment/gift-card/{card}",
         "message": "/message/{message}",
         "payment": "/order/{order}/payment/{payment}",
         "payment-credentials": "/client/{client}/location/{location}/credentials",
