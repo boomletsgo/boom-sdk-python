@@ -24,37 +24,37 @@ class TestAPI(object):
     def test_make_url(self):
         api = API()
         url = api.make_url("test")
-        assert url == "https://api.boomletsgo.com/test"
+        assert url == "https://api.boom.app/test"
 
     def test_make_url_with_leading_slash(self):
         api = API()
         url = api.make_url("/test")
-        assert url == "https://api.boomletsgo.com/test"
+        assert url == "https://api.boom.app/test"
 
     def test_make_url_with_querystring(self):
         api = API()
         url = api.make_url("test", {"option": "on"})
-        assert url == "https://api.boomletsgo.com/test?option=on"
+        assert url == "https://api.boom.app/test?option=on"
 
     def test_generate_endpoint_url(self):
         api = API()
         url = api.generate_endpoint_url("index")
-        assert url == "https://api.boomletsgo.com/"
+        assert url == "https://api.boom.app/"
 
     def test_generate_endpoint_url_with_tokens(self):
         api = API()
         url = api.generate_endpoint_url("client", client_id="308a12ce-570e-4837-a374-f69d26713aa8")
-        assert url == "https://api.boomletsgo.com/client/308a12ce-570e-4837-a374-f69d26713aa8"
+        assert url == "https://api.boom.app/client/308a12ce-570e-4837-a374-f69d26713aa8"
 
     def test_generate_endpoint_url_with_querystring(self):
         api = API()
         url = api.generate_endpoint_url("client", option="on")
-        assert url == "https://api.boomletsgo.com/client?option=on"
+        assert url == "https://api.boom.app/client?option=on"
 
     def test_generate_endpoint_url_with_data(self):
         api = API()
         url = api.generate_endpoint_url("client", {"client_id": "308a12ce-570e-4837-a374-f69d26713aa8"})
-        assert url == "https://api.boomletsgo.com/client/308a12ce-570e-4837-a374-f69d26713aa8"
+        assert url == "https://api.boom.app/client/308a12ce-570e-4837-a374-f69d26713aa8"
 
     def test_normalize_data(self):
         api = API()

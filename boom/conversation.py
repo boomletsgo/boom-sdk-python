@@ -7,7 +7,7 @@ from boom.models import Message
 class ConversationService(API):
 
     def __init__(self):
-        self.url = os.getenv("BOOM_CONVERSATION_URL", "https://conversation.boomletsgo.com")
+        self.url = os.getenv("BOOM_CONVERSATION_URL", "https://conversation.boom.app")
 
     def receive(self, message):
         response = ConversationResponse()

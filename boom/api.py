@@ -35,7 +35,7 @@ class API(object):
     }
 
     def __init__(self, authorization=None):
-        self.api_url = self.url = os.getenv("BOOM_API_URL", "https://api.boomletsgo.com")
+        self.api_url = self.url = os.getenv("BOOM_API_URL", "https://api.boom.app")
         self.authorization = authorization
 
     def get_headers(self):
