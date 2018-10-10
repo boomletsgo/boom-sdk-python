@@ -29,7 +29,7 @@ class API(object):
         "order-payment-method": "/order/{order}/payment/method/{method}",
         "order-search": "/order/search",
         "order-status-update": "/order/status/{status}",
-        "receipt-send": "/receipt/{order}/{payment}/send",
+        "receipt-send": "/order/{order}/receipt/{payment}/send",
         "refund": "/order/{order}/payment/{payment}/refund/{refund}",
         "wallet": "/payment/wallet/{identifier}"
     }
