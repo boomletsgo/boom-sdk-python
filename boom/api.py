@@ -31,7 +31,8 @@ class API(object):
         "order-status-update": "/order/status/{status}",
         "receipt-send": "/order/{order}/receipt/{payment}/send",
         "refund": "/order/{order}/payment/{payment}/refund/{refund}",
-        "wallet": "/payment/wallet/{identifier}"
+        "wallet": "/payment/wallet/{identifier}/consume",
+        "wallet-adjust": "/payment/wallet/{identifier}/adjust"
     }
 
     def __init__(self, authorization=None):
@@ -121,7 +122,6 @@ class API(object):
 
     def post(self, endpoint, data, **kwargs):
         headers = self.get_headers()
-        data = self.normalize_data(data)
         data = self.encode_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
         dataset = requests.post(url, headers=headers, data=data)
@@ -131,7 +131,6 @@ class API(object):
 
     def patch(self, endpoint, data, **kwargs):
         headers = self.get_headers()
-        data = self.normalize_data(data)
         data = self.encode_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
         dataset = requests.patch(url, headers=headers, data=data)
@@ -141,7 +140,6 @@ class API(object):
 
     def delete(self, endpoint, data, **kwargs):
         headers = self.get_headers()
-        data = self.normalize_data(data)
         data = self.encode_data(data)
         url = self.generate_endpoint_url(endpoint, **kwargs)
         requests.delete(url, headers=headers, data=data)
